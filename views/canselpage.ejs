@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    <%- pageTitle %>
+  </title>
+  <link rel="stylesheet" href="/css/bootstrap.rtl.min.css">
+  <link rel="stylesheet" href="/css/register.css">
+  <link rel="stylesheet" href="/css/stayl.css">
+</head>
+
+<body dir="rtl" style="font-family: 'irans'; background-color: #f6f6f6;">
+  <div class="container">
+    <div class="row mt-5">
+      <div class="d-flex justify-content-center mt-5">
+        <div class="card border border-0 shadow-sm rounded bg-white" style="width: 24rem;">
+          <div class="card-body text-center">
+            <a href="https://mehranrooz.ir/zawa/mohamad" style="list-style: none !important; color:#2c2c2c">
+              𝒛𝒂𝒘𝒂</h5>
+            </a>
+            <p class="mt-3" style="font-family: 'irans'; font-size: 11px;"> جهت لغو نوبت شماره همراه و کد پیگیری را وارد نمایید</p>
+            <form class="m-2 " action="/nobat/cansel" method="POST">
+              <div class="mb-2">
+                <label for="exampleInputEmail1" class="form-label"></label>
+                <input type="tel" name="number" required class="form-control inputrol rtl" placeholder="شماره همراه ">
+              </div>
+              <div class="mb-2">
+                <label for="exampleInputPassword1" class="form-label"></label>
+                <input type="number" name="nump" required class="form-control inputrol rtl" placeholder="کد پیگیری ">
+              </div>
+
+              <button type="submit" class="btnok w-100 border-0 mt-4">لغو نوبت</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

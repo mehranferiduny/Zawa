@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>رزرو نوبت</title>
+  <link rel="stylesheet" href="/css/bootstrap.rtl.min.css">
+  <link rel="stylesheet" href="/css/register.css">
+  <link rel="stylesheet" href="/css/stayl.css">
+  <link rel="stylesheet" href="/css/bootstrap-rtl.css" />
+  <link rel="stylesheet" href="/css/font-awesome.css" />
+<link rel="shortcut icon" href="/2.ico" type="image/x-icon">
+</head>
+<body dir="rtl" style="font-family: 'irans'; background-color: #f6f6f6;">
+  <div class="container">
+    <div class="row mt-5">
+    
+      <div class="d-flex justify-content-center mt-5 ">
+        <div class="card border border-0 shadow-sm rounded bg-white" style="width: 24rem;">
+          <div class="card-body">
+            <h5 class="card-title text-center h2"> 
+           
+              <a href="https://mehranrooz.ir/zawa/mohamad" style="list-style: none; color:#2c2c2c">
+                𝒛𝒂𝒘𝒂</h5>
+            </a>
+          
+            <% if(typeof errors != 'undefined') {%> <% errors.forEach(function(error) { %>
+
+              <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                  <%= error.message %>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <% }) %> <% } %>
+            <h6 class="card-subtitle mt-5 mb-3 text-muted" style="font-family: 'irans';">رزرو نوبت آرایشگاه</h6>
+            <div class="row mx-2 mb-1">
+
+
+              <div class=" alert alert-info  col-sm " style="font-size: 12px ; font-family: 'irans';">تاریخ : <%= nobat.date %> &nbsp;
+                  ساعت  : <%= nobat.saat %>
+              </div>
+
+            </div>
+            <form class="m-2" action="/sabtnobat/secsses/<%= nobat._id %>" method="POST">
+              <div class="mb-2">
+                <label for="exampleInputEmail1" class="form-label"> </label>
+                <input type="text" name="fname" class="form-control  inputrol" placeholder="نام" >
+              </div>
+              <div class="mb-2">
+                <label for="exampleInputPassword1" class="form-label"></label>
+                <input type="text" name="lname" class="form-control inputrol" placeholder="نام خانوادگی" >
+              </div>
+              <div class="mb-2">
+                <label for="exampleInputPassword1" class="form-label"> </label>
+                <input type="tel" required name="number" class="form-control inputrol rtl" placeholder="شماره همراه (-- -- --- --09) " >
+              </div>
+              <button type="submit" class="btnok w-100 border-0 mt-4">رزرو نوبت</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<script src="/js/bootstrap.bundle.min.js"></script>  
+
+<script src="/js/jquery-3.2.1.min.js"></script>
+<script src="/js/jquery.slim.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+</body>
+</body>
+</html>

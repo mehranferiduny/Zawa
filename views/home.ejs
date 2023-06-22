@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/css/bootstrap.rtl.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/stayl.css">
+  <link rel="stylesheet" href="/css/bootstrap-rtl.css" />
+  <link rel="stylesheet" href="/css/font-awesome.css" />
+  <link rel="stylesheet" href="/css/persian-datepicker.min.css">
+  <link rel="shortcut icon" href="/2.ico" type="image/x-icon">
+  <title>
+    <%- pageTitle %>
+  </title>
+</head>
+
+<body class="backgrand">
+
+
+
+  <div class="banner mb-1" >
+
+
+<a href="https://mehranrooz.ir/zawa/mohamad" class="text-white" style="font-family: 'BYekan' !important;">
+    <div class="bgbanner"></div>
+    <div class="centered">ZAWA</div>
+    <img class="bannerimag" src="/1.jpg" alt="barber">
+  </a>
+  </div>
+
+
+
+
+  <% if(message.length> 0) { %>
+    <div class="alert alert-success alert-dismissible fade show rtl" role="alert">
+      <%= message %>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <% } %>
+
+
+      <% if(error.length> 0) { %>
+        <div class="alert alert-warning alert-dismissible fade show rtl" role="alert">
+          <%= error %>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <% } %>
+          <a class=" mx-auto btn btn-danger text-center canselnobat  container d-block" href="/nobat/cansel">لغو
+            نوبت</a>
+          <hr>
+
+
+
+          <div class="w-100 row container mx-auto border-1  borderd bg-white">
+
+
+            <span class="col text-center ">
+              <form action="/home/date" method="POST">
+                <label for="exampleInputEmail1" class="form-label">فیلتر بر اساس تاریخ</label>
+                <input type="text" name="datef" class="w-100 form-control text-center" id="persianDatapicker">
+                <input type="submit" class="btn btn-info mt-2 "  style="font-size: 12px ;"  value="اعمال فیلتر">
+              </form>
+            </span>
+
+          </div>
+
+
+          <% if(datef.length> 0){%>
+
+            <div class="w-100">
+              <p class="rtl text-right pr-4 pt-3 pb-3 pl-3 " style="    border-bottom: 1px solid #78787840;
+ 
+    background-color: aliceblue;"> لیست نوبت ها در
+                <%=datef %>
+                  <a href="https://mehranrooz.ir/zawa/mohamad" class="btn btn-outline-info float-left small ml-2"
+                    style="font-size: 10px;">نمایش همه</a>
+              </p>
+
+            </div>
+
+            <%}else { %>
+
+
+              <p class="rtl text-right pr-4 pt-3 pb-3 " style="    border-bottom: 1px solid #78787840;
+ 
+    background-color: aliceblue;"> لیست تمامی نوبت ها
+
+
+              </p>
+              <% } %>
+
+
+                <% if(nobats.length>0){
+                  for(let nobat of nobats){ 
+                    
+         
+                    const datt=nobat.date.split('/'); const dayy=datt[2]; const mthh=datt[1];
+                  const yarr=datt[0];
+                  const hu=nobat.saat.split(":");
+                  if(dayy>= day && math == mthh && yaer == yarr  ){
+                  %>
+
+
+               <% if(time >= hu[0] && day == dayy) {%>
+
+                <% if(time == hu[0] && mint <= hu[1]) {%>
+
+
+
+
+                  <div class="cardvew  mx-auto">
+
+                  <div class="cardinto  rtl">
+                  <p>نوبت قابل رزرو</p>
+                  </div>
+
+
+                  <div class="row mx-2 mb-2">
+
+
+                  <div class=" borderd  col-sm text-center">تاریخ : <%= nobat.date %>
+                  </div>
+                  <div class="col-sm borderd text-center">ساعت مراجعه : <%= nobat.saat %>
+                  </div>
+
+                  </div>
+                  <a href="/sabtnobat/<%= nobat._id %>" class=" btnok">دریافت نوبت</a>
+                  </div>
+
+
+
+
+                  <%}else{  %>
+
+                  <div class="cardvew  mx-auto table-active">
+
+                    <div class="cardinto  rtl">
+                      <p>نوبت غیرقابل رزرو</p>
+                    </div>
+
+
+                    <div class="row mx-2 mb-2">
+                     
+
+                    <div class=" borderd  col-sm text-center">تاریخ : <%= nobat.date %>
+                    </div>
+                    <div class="col-sm borderd text-center">ساعت مراجعه : <%= nobat.saat %>
+                    </div>
+
+                  </div>
+                    
+                  </div>
+
+
+                   <% }}else {  %>
+
+
+                  <div class="cardvew  mx-auto">
+
+                    <div class="cardinto  rtl">
+                      <p>نوبت قابل رزرو</p>
+                    </div>
+
+
+                    <div class="row mx-2 mb-2">
+                     
+
+                    <div class=" borderd  col-sm text-center">تاریخ : <%= nobat.date %>
+                    </div>
+                    <div class="col-sm borderd text-center">ساعت مراجعه : <%= nobat.saat %>
+                    </div>
+
+                  </div>
+                    <a href="/sabtnobat/<%= nobat._id %>" class=" btnok">دریافت نوبت</a>
+                  </div>
+
+
+
+
+                    <%} %>
+
+
+
+
+                  <%} } }else {  %>
+                    <div class="cardvew row mx-auto">
+
+                    <div class="cardinto  alert alert-info">
+                      <p>برای تاریخ : <%= datef %> نوبتی ارائه داده نشده است</p>
+                    </div>
+
+                 
+                    </div>
+              
+
+                   <% }%>
+
+                    <!-- Remove the container if you want to extend the Footer to full width. -->
+                    <div class=" my-2 mt-5">
+                    <div class="w-100 "  style="border-top: 1px solid #78787845 ;"></div>
+                      <footer class="text-center text-white" style="background-color: #fdfdfd;">
+                        <!-- Grid container -->
+                        <div class="container pt-1">
+                          <!-- Section: Social media -->
+                          <section class="mb-2">
+
+                            <!-- Instagram -->
+                            <a class="btn btn-link btn-floating btn-lg text-dark m-1"
+                              href="https://instagram.com/mohamad_malekii73?igshid=YmMyMTA2M2Y=" role="button"
+                              data-mdb-ripple-color="dark"><i class="fa fa-instagram"></i></a>
+                            <a class="btn btn-link btn-floating btn-lg text-dark m-1"
+                              href="https://telegram.me/Mohamad_maleki73" role="button" data-mdb-ripple-color="dark"><i
+                                class="fa fa-telegram"></i></a>
+
+                          </section>
+                          <!-- Section: Social media -->
+                        </div>
+                        <!-- Grid container -->
+
+         
+
+                        <!-- Copyright -->
+                      </footer>
+
+                    </div>
+                    <!-- End of .container -->
+
+
+                    <script src="/js/jquery-3.2.1.min.js"></script>
+                    <script src="/js/jquery.slim.min.js"></script>
+                    <script src="/js/bootstrap.min.js"></script>
+                    <script src="/js/jquery-3.2.1.min.js"></script>
+                    <script src="/js/persian-date.min.js"></script>
+                    <script src="/js/persian-datepicker.min.js"></script>
+                    <script src="/js/app.js"></script>
+
+</body>
+
+</html>
